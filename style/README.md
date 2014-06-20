@@ -332,6 +332,17 @@ Objective-C
   other base types.
 * Prefer AutoLayout for view layouts and constraints.
 
+Swift
+-----
+
+[Sample](samples/Swift.swift)
+
+* Keep up with the Objective-C style guide above. Will highlight differences
+  here.
+* Use `let` whenever possible to make immutable variables
+* Name all parameters in functions and enum cases
+* Pronounce the `up` in tuple like you would the word `up`
+
 Python
 ------
 
