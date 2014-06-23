@@ -341,6 +341,8 @@ Swift
   here.
 * Use `let` whenever possible to make immutable variables
 * Name all parameters in functions and enum cases
+* Use trailing closures
+* Let the compiler infer the type whenever possible
 
 Python
 ------

@@ -11,12 +11,6 @@ func yTown(some: Int, withCallback callback: CoolClosure) -> Bool {
     return CoolClosure(some)
 }
 
-// Use trailing closures
-// Don't specify the type if the compiler can infer it
-let cool = yTown(5) { foo in // instead of: { (foo: Int) in
-    return foo == 6
-}
-
 // It's OK to use $ variable references if the closer is very short and
 // readability is maintained
 let cool = yTown(5) { $0 == 6 }
