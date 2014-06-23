@@ -47,22 +47,19 @@ func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndex
 
 // Enums --------------------------------------------------------------
 
-enum Employee {
-    case FullTime(name: String, office: String)
-    case Apprentice(name: String, office: String, mentor: Employee)
+enum Response {
+    case Success(NSData)
+    case Failure(NSError)
 }
 
 // when the type is known you can let the compiler infer
-let tony = Employee.FullTime(name: "Tony", office: "Boston")
-let gordon: Employee = .Apprentice(name: "Gordon", office: "Boston", mentor: tony)
+let response: Response = .Success(NSData())
 
-for employee in [tony, gordon] {
-    switch employee {
-    case let .FullTime(name, office):
-        println("\(name) is a full time employee in \(office)")
-    
-    case let .Apprentice(name, office, mentor):
-        println("\(name) is an apprentice in \(office) who is mentored by \(mentor.name)")
-    }
+switch response {
+case let .Success(data):
+    println("The response returned successfully \(data)")
+
+case let .Failure(error):
+    println("An error occured: \(error)")
 }
 
