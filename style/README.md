@@ -341,7 +341,6 @@ Swift
   here.
 * Use `let` whenever possible to make immutable variables
 * Name all parameters in functions and enum cases
-* Pronounce the `up` in tuple like you would the word `up`
 
 Python
 ------

@@ -12,16 +12,23 @@ func yTown(some: Int, withCallback callback: CoolClosure) -> Bool {
 }
 
 // Use trailing closures
-let cool = yTown(5) { (foo: Int) in
-// or Don't cast parameters
-let cool = yTown(5) { foo in
+// Don't specify the type if the compiler can infer it
+let cool = yTown(5) { foo in // instead of: { (foo: Int) in
     return foo == 6
 }
 
-// Don't use $ variable references
+// It's OK to use $ variable references if the closer is very short and
+// readability is maintained
 let cool = yTown(5) { $0 == 6 }
-// But shortening to one line with small closures is OK
-let cool = yTown(5) { foo in foo == 6 }
+
+// Use full variable names when closures are more complex
+let cool = yTown(5) { foo in
+    if foo > 5 && foo < 0 {
+        return true
+    } else {
+      return false
+    }
+}
 
 // Optionals -----------------------------------------------------------
 
@@ -32,16 +39,16 @@ if let definitely = maybe {
     println("This is \(definitely) here")
 }
 
-// If the API you are using has implicit unwrapping you don't need if-let
-// But still check for its existance
-func privateAPI(callback: (error: NSError!) -> ()) {
-    callback(.None)
-}
-
-privateAPI() { error in
-    if error {
-        println("Error: \(error)")
+// If the API you are using has implicit unwrapping you should still use if-let
+func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    if let index = indexPath {
+        if let table = tableView {
+            let cell = table.dequeue....
+            return cell;
+        }
     }
+    
+    return .None
 }
 
 // Enums --------------------------------------------------------------
@@ -55,12 +62,12 @@ enum Employee {
 let tony = Employee.FullTime(name: "Tony", office: "Boston")
 let gordon: Employee = .Apprentice(name: "Gordon", office: "Boston", mentor: tony)
 
-for emp in [tony, gordon] {
-    switch emp {
-    case .FullTime(let name, let office):
+for employee in [tony, gordon] {
+    switch employee {
+    case let .FullTime(name, office):
         println("\(name) is a full time employee in \(office)")
     
-    case .Apprentice(let name, let office, let mentor):
+    case let .Apprentice(name, office, mentor):
         println("\(name) is an apprentice in \(office) who is mentored by \(mentor.name)")
     }
 }
