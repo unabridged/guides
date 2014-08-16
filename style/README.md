@@ -128,10 +128,14 @@ Sass
 CoffeeScript
 ------------
 
+[Sample](samples/coffee.coffee)
+
 * Avoid conditional modifiers (lines that end with conditionals).
 * Initialize arrays using `[]`.
 * Initialize empty objects and hashes using `{}`.
 * Use hyphen-separated filenames, such as `coffee-script.coffee`.
+* Use zero spaces before and one space after the colon in a colon assignment
+  (i.e. classes, objects).
 * Use `PascalCase` for classes, `lowerCamelCase` for variables and functions,
   `SCREAMING_SNAKE_CASE` for constants, `_single_leading_underscore` for
   private variables and functions.
