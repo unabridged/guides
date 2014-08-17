@@ -129,7 +129,7 @@ CoffeeScript
 ------------
 
 * Avoid conditional modifiers (lines that end with conditionals).
-* Don't use backticks.
+* Avoid backticks.
 * Initialize arrays using `[]`.
 * Initialize empty objects and hashes using `{}`.
 * Prefer `==` and `!=` to `is` and `isnt`
