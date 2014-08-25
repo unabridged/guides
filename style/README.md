@@ -125,22 +125,6 @@ Sass
 * Prefer the same file structure that is found in app/views.
 * Avoid having files longer than 100 lines.
 
-CoffeeScript
-------------
-
-* Avoid conditional modifiers (lines that end with conditionals).
-* Initialize arrays using `[]`.
-* Initialize empty objects and hashes using `{}`.
-* Use hyphen-separated filenames, such as `coffee-script.coffee`.
-* Use `PascalCase` for classes, `lowerCamelCase` for variables and functions,
-  `SCREAMING_SNAKE_CASE` for constants, `_single_leading_underscore` for
-  private variables and functions.
-* Prefer `==` and `!=` to `is` and `isnt`
-* Prefer `||` and `&&` to `or` and `and`
-* Prefer `!` over `not`
-* Prefer `@` over `this` for referencing instance properties.
-* Prefer double quotes.
-
 Backbone
 --------
 
@@ -167,8 +151,8 @@ Ruby
 * Avoid bang (!) method names. Prefer descriptive names.
 * Don't use `self` explicitly anywhere except class methods (`def self.method`)
   and assignments (`self.attribute =`).
-* Prefer `detect` over `find`.
-* Prefer `inject` over `reduce`.
+* Prefer `find` over `detect`.
+* Prefer `reduce` over `inject`.
 * Prefer `map` over `collect`.
 * Prefer `select` over `find_all`.
 * Prefer double quotes for strings.
@@ -189,8 +173,8 @@ Ruby
 * Use a trailing comma after each item in a multi-line list, including the last
   item. [Example][trailing comma example]
 * Use heredocs for multi-line strings.
-* Prefer `protected` over `private` for non-public `attr_reader`s, `attr_writer`s,
-  and `attr_accessor`s.
+* Prefer `private` over `protected` except for non-public `attr_reader`s,
+  `attr_writer`s, and `attr_accessor`s.
 
 [trailing comma example]: /style/samples/ruby.rb#L49
 [required kwargs]: /style/samples/ruby.rb#L16
@@ -222,7 +206,8 @@ Rails
 * Order ActiveRecord associations above ActiveRecord validations.
 * Order controller contents: filters, public methods, private methods.
 * Order i18n translations alphabetically by key name.
-* Order model contents: constants, macros, public methods, private methods.
+* Order model contents: constants, macros, includes, public methods, private
+  methods.
 * Put application-wide partials in the [`app/views/application`] directory.
 * Use `def self.method`, not the `scope :method` DSL.
 * Use the default `render 'partial'` syntax over `render partial: 'partial'`.
@@ -234,9 +219,7 @@ Rails Migrations
 ----------------
 * Set an empty string as the default constraint for non-required string and text
   fields. [Example][default example].
-* List timestamps first when creating a new table. [Example][timestamps example].
 
-[timestamps example]: /style/samples/migration.rb
 [default example]: /style/samples/migration.rb#L6
 
 Rails Routes
@@ -264,7 +247,6 @@ Email
 Testing
 -------
 
-* Avoid the `private` keyword in specs.
 * Avoid checking boolean equality directly. Instead, write predicate methods and
   use appropriate matchers. [Example][predicate-example].
 * Prefer `eq` to `==` in RSpec.
@@ -321,52 +303,6 @@ Testing
 
 [Imperative mood]: http://en.wikipedia.org/wiki/Imperative_mood
 
-Objective-C
------------
-
-[Sample](samples/ObjectiveC.m)
-
-* Place `#import`s into the prefix header (`ProjectName-Prefix.pch`) only if
-  used in _many_ files.
-* Place `.xib` files under `Resources/Nibs` and their associated view files in
-  `Classes/Views`.
-* Order `#import` statements alphabetically.
-* Order `@class` directives alphabetically.
-* Order `@property` modifiers: memory management, atomicity, writability.
-* Leave out `@property` modifiers unless needed, `nonatomic` is the only one
-  needed in most cases except connecting views with IB in which case `weak` may
-  also be needed.
-* Prefer `@class` to `#import` when referring to external classes in a public
-  `@interface`.
-* Prefer `@property` to declaring instance variables.
-* Prefix class names with a 2 or 3 letter project acronym.
-* Prefix string constants being used as keys with 'k'.
-* Remove `#import` statements for `Foundation` and `UIKit` in new project
-  templates.
-* Separate methods by function using `#pragma mark - <Section Name>`
-* Separate sections into subsections using `#pragma mark <Subsection Name>`
-* Use `@[arrayObject]`, `@{@"key" : value}`, `@(YES or NO)`, and `@5.0`
-  literals.
-* Use `@interface ClassName ()` to declare private properties.
-* Use `lowerCamelCase` for method names.
-* Use `NSAssert` in methods that require the presence of certain arguments.
-* Write methods using the happy path. Indent the exceptional cases. Keep the
-  optimal case in the left-most column.
-* Prefer `enumerateObjectsUsingBlock:` when looping through arrays.
-* Always use braces with control and loop blocks unless it can easily fit on
-  one line.
-* Place opening brace for control and loop blocks on same line.
-* Prefer `NSInteger`, `CGFloat`, and similar macros over `int`, `float`, and
-  other base types.
-* Prefer *Auto Layout* for view layouts and constraints.
-
-Python
-------
-
-* Follow [PEP 8].
-
-[PEP 8]: http://www.python.org/dev/peps/pep-0008/
-
 Shell
 -----
 
@@ -379,18 +315,3 @@ Shell
 * Use single quotes for strings that don't contain escapes or variables.
 * Use two-space indentation.
 
-Haskell
--------
-
-* Break long expressions before operators or keywords.
-* Break long type signatures between arguments.
-* Order imports in three sections, separating each by a blank line:
-  [standard libraries], third-party libraries, application modules.
-  Within each section, alphabetize the imports and place qualified
-  imports last.
-* Use comma-first style exports, records, and lists.
-* Use four-space indentation except the `where` keyword which is
-  indented two spaces. [Example].
-
-[standard libraries]: http://www.haskell.org/ghc/docs/latest/html/libraries/index.html
-[Example]: /style/samples/haskell.hs#L41
